@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Modding KotOR on iOS</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Modding KotOR on iOS</h1>
+</header>
+<p>GETTING STARTED:</p>
+<p>· Install Sideloadly from <a
+href="https://sideloadly.io/">https://sideloadly.io/</a></p>
+<p>· Install AppDump2 (<a
+href="https://onejailbreak.com/blog/appdump2/">https://onejailbreak.com/blog/appdump2/</a>)
+and TrollStore (<a
+href="https://trollstore.app/">https://trollstore.app/</a>) on your iOS
+device.</p>
+<p>· Use AppDump2 and trollstore.app to decrypt KOTOR's IPA, and then
+use your favorite file manager to send the ipa over to your PC. If this
+was successful, skip over to MODDING SECTION:</p>
+<p>IPATOOL INSTRUCTIONS:</p>
+<p>· If for some reason your device doesn't let you install appdump2 or
+trollstore, here is another way to get the ipa.</p>
+<p>· Follow the instructions at <a
+href="https://github.com/majd/ipatool">https://github.com/majd/ipatool</a>
+to get yourself signed in. General syntax is:</p>
+<p>ipatool auth login --email &lt;youremail&gt; --password
+&lt;yourpassword&gt;</p>
+<p>without the &lt; and &gt;</p>
+<p>· Download the k1 or k2 ipa using ipatool:</p>
+<p>· ipatool download -b &lt;bundle id&gt;</p>
+<p>The bundle ids for both games are as follows:</p>
+<p><br />
+k1: com.aspyr.kotor.ios</p>
+<p>k2: com.aspyr.kotor2.ios</p>
+<p>So downloading k1 would be `ipatool download -b
+com.aspyr.kotor.ios`</p>
+<p>Once it's done you may get an error saying it was unable to close a
+tmp file because it was in use. In the same folder as ipatool.exe,
+you'll see a .ipa.tmp file, just rename it and remove the '.tmp'
+extension so it ends with '.ipa'.</p>
+<p>if you've gone the ipatool route you'll need these decrypted
+files:</p>
+<p>- k1: <a
+href="https://mega.nz/file/4GBRWaxK#yHQwJAcrgwp47S3BA-SVbub2cugtVO_VzrkbOR5WDuI">https://mega.nz/file/4GBRWaxK#yHQwJAcrgwp47S3BA-SVbub2cugtVO_VzrkbOR5WDuI</a></p>
+<p>- k2: <a
+href="https://mega.nz/file/BORCTbLL#JdLVserxTwD44tfE3K9KscoIArrC5Qg4WMoPGDCmYvE">https://mega.nz/file/BORCTbLL#JdLVserxTwD44tfE3K9KscoIArrC5Qg4WMoPGDCmYvE</a></p>
+<p>Now extract the ipa you downloaded with ipatool using 7zip. Delete
+any SC_Info folders you find (there should be at least 2, maybe 3).</p>
+<p>Extract and Move the contents of the above mega.nz download into
+where you extracted the ipa, overwriting when prompted. If you did not
+get an overwrite message, check that you put it in the right place.</p>
+<p>You now have a decrypted IPA that can be modded and sideloaded to
+your iOS device. Move on to MODDING SECTION</p>
+<p>MODDING your decrypted ipa:</p>
+<p>You now have a decrypted ipa that is ready to be modded. Simply point
+tslpatcher towards that dir (you may need to create a fake file named
+swkotor.exe so it'll recognize it as a valid game path) and copy your
+mods into Override etc.</p>
+<p>When you are done, ensure you ran the case-sensitivity fix, and note
+that this should ONLY be ran in the MODULES, OVERRIDE, STREAMWAVES,
+STREAMSOUNDS, STREAMVOICE, RIMS, or LIPS directory. Do NOT run it in the
+top level folder of your ipa.</p>
+<p>Now that you've lowercased all the files/folders, use your favorite
+archiving tool to zip everything up. Select all files/folders in the top
+level and add to an archive. Make sure you don't have an extra folder
+inside your archive: the top level of your archive should not be a
+single folder, you should visibly be able to see all the contents.</p>
+<p>Skip over to the SIDELOADLY section.</p>
+<p>SIDELOADLY:</p>
+<p>You are now ready to move your ipa over to your iOS device. Open up
+Sideloadly, browse for the ipa you've been working with, and press the
+Advanced Options section.</p>
+<p>· Ensure Signing mode is set to 'Apple ID Sideload'. Haven't tried
+the others.</p>
+<p>· Check the 'Enable File-sharing' box. Is relevant for a future
+tutorial.</p>
+<p>· Check 'Remove limitation on supported devices'</p>
+<p>· Check the 'Try to support older iOS versions' box.</p>
+<p>Checking the last two allowed me to play KOTOR on my iPad Air,
+despite the app store saying that device was incompatible.</p>
+<p>Now plug your iOS device into your PC and select it at the top of
+Sideloadly (where it says iDevice). Press the bottom right button that
+looks like two arrows to open the log viewer, and press 'Start'.</p>
+<p>· This process will take A WHILE. Grab a coffee, make some popcorn,
+kiss your girlfriend, do some hw, and come back.</p>
+<p>If you see an error that looks like this, you need more free space on
+your iOS device. From what I understand you need twice the amount of
+space of the IPA itself. So if your IPA is 5 GB, you need 10GB free, if
+it's 2GB you need 4 etc.</p>
+<p>"""</p>
+<p>Got error: Call to lockdownd_start_service failed:
+LOCKDOWN_E_MUX_ERROR. IPA file exists, retrying</p>
+<p>FAILED: Call to lockdownd_start_service failed:
+LOCKDOWN_E_MUX_ERROR</p>
+<p>"""</p>
+<p>Sometimes unplugging your iOS device or restarting Sideloadly can fix
+it but mainly you'll just want to let it do its thing, it continually
+will retry until it succeeds and it probably does that for a reason.</p>
+<p>If you get the 100% in the logviewer, you've successfully modded
+KOTOR on iOS. Here's a few things to know right off the bat.</p>
+<p>· You need to resign the ipa every 7 days unless you have a paid
+apple developer account. This is an apple restriction for creating iOS
+apps. Just plug your phone in and let sideloadly sign it automatically
+every once in a while.</p>
+<p>· There is currently a bug with the neocities modbuild and some
+blaster icons. We are uncertain why this happens.</p>
+<p>· If you get an immediate crash after pressing 'new game', you forgot
+to do the case-sensitivity fixes for iOS. Go back to your pc and redo
+those steps.</p>
+</body>
+</html>
