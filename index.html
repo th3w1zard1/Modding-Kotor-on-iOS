@@ -1,159 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="Guide to modding Star Wars: KotOR and The Sith Lords on iOS: IPAs, ipatool, TSLPatcher, Sideloadly, and troubleshooting." />
   <title>Modding KotOR on iOS</title>
+  <meta name="theme-color" content="#faf9f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1216" media="(prefers-color-scheme: dark)">
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      border: none;
-      border-top: 1px solid #1a1a1a;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -170,111 +28,437 @@
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">Modding KotOR on iOS</h1>
-</header>
-<p>GETTING STARTED:</p>
-<p>· Install Sideloadly from <a
-href="https://sideloadly.io/">https://sideloadly.io/</a></p>
-<p>· Install AppDump2 (<a
-href="https://onejailbreak.com/blog/appdump2/">https://onejailbreak.com/blog/appdump2/</a>)
-and TrollStore (<a
-href="https://trollstore.app/">https://trollstore.app/</a>) on your iOS
-device.</p>
-<p>· Use AppDump2 and trollstore.app to decrypt KOTOR's IPA, and then
-use your favorite file manager to send the ipa over to your PC. If this
-was successful, skip over to MODDING SECTION:</p>
-<p>IPATOOL INSTRUCTIONS:</p>
-<p>· If for some reason your device doesn't let you install appdump2 or
-trollstore, here is another way to get the ipa.</p>
-<p>· Follow the instructions at <a
-href="https://github.com/majd/ipatool">https://github.com/majd/ipatool</a>
-to get yourself signed in. General syntax is:</p>
-<p>ipatool auth login --email &lt;youremail&gt; --password
-&lt;yourpassword&gt;</p>
-<p>without the &lt; and &gt;</p>
-<p>· Download the k1 or k2 ipa using ipatool:</p>
-<p>· ipatool download -b &lt;bundle id&gt;</p>
-<p>The bundle ids for both games are as follows:</p>
-<p><br />
-k1: com.aspyr.kotor.ios</p>
-<p>k2: com.aspyr.kotor2.ios</p>
-<p>So downloading k1 would be `ipatool download -b
-com.aspyr.kotor.ios`</p>
-<p>Once it's done you may get an error saying it was unable to close a
-tmp file because it was in use. In the same folder as ipatool.exe,
-you'll see a .ipa.tmp file, just rename it and remove the '.tmp'
-extension so it ends with '.ipa'.</p>
-<p>if you've gone the ipatool route you'll need these decrypted
-files:</p>
-<p>- k1: <a
-href="https://mega.nz/file/4GBRWaxK#yHQwJAcrgwp47S3BA-SVbub2cugtVO_VzrkbOR5WDuI">https://mega.nz/file/4GBRWaxK#yHQwJAcrgwp47S3BA-SVbub2cugtVO_VzrkbOR5WDuI</a></p>
-<p>- k2: <a
-href="https://mega.nz/file/BORCTbLL#JdLVserxTwD44tfE3K9KscoIArrC5Qg4WMoPGDCmYvE">https://mega.nz/file/BORCTbLL#JdLVserxTwD44tfE3K9KscoIArrC5Qg4WMoPGDCmYvE</a></p>
-<p>Now extract the ipa you downloaded with ipatool using 7zip. Delete
-any SC_Info folders you find (there should be at least 2, maybe 3).</p>
-<p>Extract and Move the contents of the above mega.nz download into
-where you extracted the ipa, overwriting when prompted. If you did not
-get an overwrite message, check that you put it in the right place.</p>
-<p>You now have a decrypted IPA that can be modded and sideloaded to
-your iOS device. Move on to MODDING SECTION</p>
-<p>MODDING your decrypted ipa:</p>
-<p>You now have a decrypted ipa that is ready to be modded. Simply point
-tslpatcher towards that dir (you may need to create a fake file named
-swkotor.exe so it'll recognize it as a valid game path) and copy your
-mods into Override etc.</p>
-<p>When you are done, ensure you ran the case-sensitivity fix, and note
-that this should ONLY be ran in the MODULES, OVERRIDE, STREAMWAVES,
-STREAMSOUNDS, STREAMVOICE, RIMS, or LIPS directory. Do NOT run it in the
-top level folder of your ipa.</p>
-<p>Now that you've lowercased all the files/folders, use your favorite
-archiving tool to zip everything up. Select all files/folders in the top
-level and add to an archive. Make sure you don't have an extra folder
-inside your archive: the top level of your archive should not be a
-single folder, you should visibly be able to see all the contents.</p>
-<p>Skip over to the SIDELOADLY section.</p>
-<p>SIDELOADLY:</p>
-<p>You are now ready to move your ipa over to your iOS device. Open up
-Sideloadly, browse for the ipa you've been working with, and press the
-Advanced Options section.</p>
-<p>· Ensure Signing mode is set to 'Apple ID Sideload'. Haven't tried
-the others.</p>
-<p>· Check the 'Enable File-sharing' box. Is relevant for a future
-tutorial.</p>
-<p>· Check 'Remove limitation on supported devices'</p>
-<p>· Check the 'Try to support older iOS versions' box.</p>
-<p>Checking the last two allowed me to play KOTOR on my iPad Air,
-despite the app store saying that device was incompatible.</p>
-<p>Now plug your iOS device into your PC and select it at the top of
-Sideloadly (where it says iDevice). Press the bottom right button that
-looks like two arrows to open the log viewer, and press 'Start'.</p>
-<p>· This process will take A WHILE. Grab a coffee, make some popcorn,
-kiss your girlfriend, do some hw, and come back.</p>
-<p>If you see an error that looks like this, you need more free space on
-your iOS device. From what I understand you need twice the amount of
-space of the IPA itself. So if your IPA is 5 GB, you need 10GB free, if
-it's 2GB you need 4 etc.</p>
-<p>"""</p>
-<p>Got error: Call to lockdownd_start_service failed:
-LOCKDOWN_E_MUX_ERROR. IPA file exists, retrying</p>
-<p>FAILED: Call to lockdownd_start_service failed:
-LOCKDOWN_E_MUX_ERROR</p>
-<p>"""</p>
-<p>Sometimes unplugging your iOS device or restarting Sideloadly can fix
-it but mainly you'll just want to let it do its thing, it continually
-will retry until it succeeds and it probably does that for a reason.</p>
-<p>If you get the 100% in the logviewer, you've successfully modded
-KOTOR on iOS. Here's a few things to know right off the bat.</p>
-<p>· You need to resign the ipa every 7 days unless you have a paid
-apple developer account. This is an apple restriction for creating iOS
-apps. Just plug your phone in and let sideloadly sign it automatically
-every once in a while.</p>
-<p>· There is currently a bug with the neocities modbuild and some
-blaster icons. We are uncertain why this happens.</p>
-<p>· If you get an immediate crash after pressing 'new game', you forgot
-to do the case-sensitivity fixes for iOS. Go back to your pc and redo
-those steps.</p>
+<a class="skip" href="#modding-knights-of-the-old-republic-on-ios">Skip to main content</a>
+<main>
+<nav id="TOC" role="doc-toc" aria-label="Table of contents">
+<ul>
+<li><a href="#modding-knights-of-the-old-republic-on-ios"
+id="toc-modding-knights-of-the-old-republic-on-ios">Modding <em>Knights
+of the Old Republic</em> on iOS</a>
+<ul>
+<li><a href="#getting-a-decrypted-ipa"
+id="toc-getting-a-decrypted-ipa">Getting a decrypted IPA</a>
+<ul>
+<li><a href="#what-you-will-use" id="toc-what-you-will-use">What you
+will use</a></li>
+<li><a href="#steps-appdump2-trollstore"
+id="toc-steps-appdump2-trollstore">Steps (AppDump2 +
+TrollStore)</a></li>
+</ul></li>
+<li><a href="#using-ipatool" id="toc-using-ipatool">Using
+<code>ipatool</code></a>
+<ul>
+<li><a href="#install-and-sign-in" id="toc-install-and-sign-in">Install
+and sign in</a></li>
+<li><a href="#download-the-game" id="toc-download-the-game">Download the
+game</a></li>
+<li><a href="#if-the-download-finishes-with-a-file-in-use-or-.tmp-error"
+id="toc-if-the-download-finishes-with-a-file-in-use-or-.tmp-error">If
+the download “finishes” with a file-in-use or <code>.tmp</code>
+error</a></li>
+</ul></li>
+<li><a href="#merging-decrypted-assets"
+id="toc-merging-decrypted-assets">Merging decrypted assets</a></li>
+<li><a href="#modding-your-decrypted-ipa"
+id="toc-modding-your-decrypted-ipa">Modding your decrypted IPA</a>
+<ul>
+<li><a href="#case-sensitivity-on-ios"
+id="toc-case-sensitivity-on-ios">Case-sensitivity on iOS</a></li>
+<li><a href="#repack-the-ipa-zip-not-a-single-nested-folder"
+id="toc-repack-the-ipa-zip-not-a-single-nested-folder">Repack the IPA
+(zip, not a single nested folder)</a></li>
+</ul></li>
+<li><a href="#sideloadly" id="toc-sideloadly">Sideloadly</a>
+<ul>
+<li><a href="#sideloadly-error-lockdown_e_mux_error"
+id="toc-sideloadly-error-lockdown_e_mux_error">Sideloadly error:
+<code>LOCKDOWN_E_MUX_ERROR</code></a></li>
+<li><a href="#after-a-successful-install"
+id="toc-after-a-successful-install">After a successful install</a></li>
+</ul></li>
+<li><a href="#troubleshooting-tips"
+id="toc-troubleshooting-tips">Troubleshooting &amp; tips</a></li>
+</ul></li>
+</ul>
+</nav>
+<section id="modding-knights-of-the-old-republic-on-ios" class="level1">
+<h1>Modding <em>Knights of the Old Republic</em> on iOS</h1>
+<p>A practical guide to obtaining a <strong>decrypted IPA</strong>,
+preparing it for <strong>TSLPatcher</strong> (and related tools), and
+<strong>sideloading</strong> a modded build back to an iPhone or iPad.
+<em>KotOR</em> and <em>The Sith Lords</em> (often called
+<strong>K1</strong> and <strong>K2</strong>) are distributed on iOS as
+<strong>IPA</strong> files—standard iOS app packages you can back up,
+inspect on a computer, and (once decrypted) modify like a PC game
+folder.</p>
+<blockquote>
+<p><strong>On this page:</strong> <a
+href="#getting-a-decrypted-ipa">Getting the IPA</a> · <a
+href="#using-ipatool">ipatool path</a> · <a
+href="#merging-decrypted-assets">Decrypt helper files</a> · <a
+href="#modding-your-decrypted-ipa">Modding</a> · <a
+href="#sideloadly">Sideloadly</a> · <a
+href="#troubleshooting-tips">Troubleshooting</a></p>
+</blockquote>
+<section id="getting-a-decrypted-ipa" class="level2">
+<h2>Getting a decrypted IPA</h2>
+<p>You need a copy of the game in <strong>decrypted</strong> form. Two
+common routes:</p>
+<ol type="1">
+<li><strong>On-device decryption</strong> (AppDump2 + TrollStore) — when
+your device can run those tools.</li>
+<li><strong>Download with ipatool</strong> (PC/Mac) — when you cannot or
+prefer not to use the first method; you then <strong>merge in</strong>
+decrypted files from a separate download (see <a
+href="#merging-decrypted-assets">below</a>).</li>
+</ol>
+<section id="what-you-will-use" class="level3">
+<h3>What you will use</h3>
+<ul>
+<li><strong><a href="https://sideloadly.io/">Sideloadly</a></strong> —
+for installing the finished IPA to your device from a PC (required
+later; install it on your computer now).</li>
+<li><strong><a
+href="https://onejailbreak.com/blog/appdump2/">AppDump2</a></strong> and
+<strong><a href="https://trollstore.app/">TrollStore</a></strong> — on
+<strong>iOS</strong> only, for dumping/decrypting an installed app’s
+IPA, if your device supports them.</li>
+<li>A <strong>file manager</strong> or transfer method to move the IPA
+from the device to your PC.</li>
+</ul>
+</section>
+<section id="steps-appdump2-trollstore" class="level3">
+<h3>Steps (AppDump2 + TrollStore)</h3>
+<ol type="1">
+<li>Install <strong>Sideloadly</strong> on your computer from the link
+above.</li>
+<li>On your iOS device, set up <strong>AppDump2</strong> and
+<strong>TrollStore</strong> using the official instructions for
+each.</li>
+<li>Use <strong>AppDump2</strong> together with
+<strong>TrollStore</strong> to produce a <strong>decrypted IPA</strong>
+of <em>KotOR</em> (K1) or <em>The Sith Lords</em> (K2).</li>
+<li>Send that IPA to your PC with the file manager or method you
+prefer.</li>
+</ol>
+<p>If that completes successfully, you can skip the ipatool section and
+go straight to <a href="#modding-your-decrypted-ipa">Modding your
+decrypted IPA</a>.</p>
+<hr />
+</section>
+</section>
+<section id="using-ipatool" class="level2">
+<h2>Using <code>ipatool</code></h2>
+<p>If you <strong>cannot</strong> install <strong>AppDump2</strong> or
+<strong>TrollStore</strong> (or they fail on your device), you can
+download an encrypted copy of the app from Apple’s servers with
+<strong><a href="https://github.com/majd/ipatool">ipatool</a></strong>.
+Those downloads are <strong>not</strong> fully usable for modding until
+you add decrypted pieces from the MEGA links in <a
+href="#merging-decrypted-assets">Merging decrypted assets</a>.</p>
+<section id="install-and-sign-in" class="level3">
+<h3>Install and sign in</h3>
+<p>Install <strong>ipatool</strong> on your PC or Mac and follow the
+project’s README. Sign in to your Apple account (the same one that
+<strong>owns</strong> the App Store purchase of the game).</p>
+<p><strong>Example</strong> (replace the placeholders with <em>your</em>
+email and password—<strong>do not</strong> type the angle brackets):</p>
+<pre class="text"><code>ipatool auth login --email your@email.com --password your-secure-password</code></pre>
+<p><strong>Security notes:</strong></p>
+<ul>
+<li>Your password is sensitive. Prefer running this on a
+<strong>trusted, private</strong> machine, and be aware that shells
+often <strong>log command history</strong>. Consider the tool’s
+documentation for <strong>environment variables</strong> or other safer
+patterns if available.</li>
+<li>You must <strong>own the game</strong> on the Apple ID you use.
+Piracy is not supported; this guide assumes a legitimate App Store
+copy.</li>
+</ul>
+</section>
+<section id="download-the-game" class="level3">
+<h3>Download the game</h3>
+<p>Use <code>ipatool download</code> with the correct <strong>bundle
+ID</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Game</th>
+<th>Bundle ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>KotOR</em> (K1)</td>
+<td><code>com.aspyr.kotor.ios</code></td>
+</tr>
+<tr>
+<td><em>The Sith Lords</em> (K2)</td>
+<td><code>com.aspyr.kotor2.ios</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong></p>
+<pre class="text"><code>ipatool download -b com.aspyr.kotor.ios
+ipatool download -b com.aspyr.kotor2.ios</code></pre>
+</section>
+<section id="if-the-download-finishes-with-a-file-in-use-or-.tmp-error"
+class="level3">
+<h3>If the download “finishes” with a file-in-use or <code>.tmp</code>
+error</h3>
+<p><code>ipatool</code> may report that a temporary file could not be
+closed. In the same folder as <code>ipatool.exe</code> (on Windows),
+look for a file like <strong><code>Something.ipa.tmp</code></strong>.
+<strong>Rename</strong> it and remove the
+<strong><code>.tmp</code></strong> extension so the file ends in
+<strong><code>.ipa</code></strong>. You should then have a valid IPA
+archive to extract.</p>
+<p>If you use only this <strong>ipatool</strong> route, you
+<strong>still need</strong> the extra decrypted material from the next
+section before modding and sideloading will work as intended.</p>
+<hr />
+</section>
+</section>
+<section id="merging-decrypted-assets" class="level2">
+<h2>Merging decrypted assets</h2>
+<p>If you used <strong>ipatool</strong>, obtain and merge the following
+<strong>decrypted file packs</strong> (hosted off-site; links may change
+if the uploader updates them—check community threads if a link is
+dead):</p>
+<ul>
+<li><strong>K1 (KotOR):</strong> <a
+href="https://mega.nz/file/4GBRWaxK#yHQwJAcrgwp47S3BA-SVbub2cugtVO_VzrkbOR5WDuI">MEGA
+– K1 decrypted pack</a><br />
+</li>
+<li><strong>K2 (The Sith Lords):</strong> <a
+href="https://mega.nz/file/BORCTbLL#JdLVserxTwD44tfE3K9KscoIArrC5Qg4WMoPGDCmYvE">MEGA
+– K2 decrypted pack</a></li>
+</ul>
+<p><strong>Merge steps (high level):</strong></p>
+<ol type="1">
+<li><strong>Extract</strong> the IPA you got from <code>ipatool</code>
+with a tool like <strong>7-Zip</strong> (Windows) or an equivalent
+archive tool.</li>
+<li>Inside the extracted app bundle, <strong>delete</strong> any folders
+named <strong><code>SC_Info</code></strong> (there are usually at least
+two; you may see three). These relate to app encryption; removing them
+is part of the usual workflow.</li>
+<li><strong>Extract</strong> the MEGA download for your game and
+<strong>copy</strong> its contents <strong>into</strong> the same
+extracted IPA tree, <strong>overwriting</strong> when prompted.<br />
+</li>
+<li>If you are <strong>not</strong> asked to overwrite anything,
+double-check that you are merging into the <strong>correct</strong>
+inner app folder (the structure should mirror a normal <em>KotOR</em>
+install layout, e.g. <code>Override</code>, <code>modules</code>, and
+similar for that title).</li>
+</ol>
+<p>You should end up with a <strong>decrypted IPA</strong> structure
+that TSLPatcher and file-based mods can treat like the PC version’s
+folders, ready for the <a href="#modding-your-decrypted-ipa">modding</a>
+and <a href="#sideloadly">Sideloadly</a> steps.</p>
+<hr />
+</section>
+<section id="modding-your-decrypted-ipa" class="level2">
+<h2>Modding your decrypted IPA</h2>
+<p>You now have a <strong>decrypted IPA</strong> (either directly from
+the device or after ipatool + MEGA merge).</p>
+<ol type="1">
+<li><strong>Point TSLPatcher (or your mod’s installer) at the extracted
+app folder</strong> — the same tree where <code>Override</code>,
+<code>modules</code>, and related directories live.<br />
+</li>
+<li>If TSLPatcher insists on a PC-style path, it may look for a
+<strong><code>swkotor.exe</code></strong> (or similar) to recognize the
+game. The usual workaround is to add a <strong>dummy/placeholder
+file</strong> with that name in the right place so the patcher accepts
+the directory as a valid <em>KotOR</em> root (follow your mod’s or
+tool’s current instructions; paths differ slightly for K1 vs K2).<br />
+</li>
+<li><strong>Install mods</strong> in the standard way:
+<strong><code>Override</code></strong>, modules, and other folders as
+each mod’s readme specifies.</li>
+</ol>
+<section id="case-sensitivity-on-ios" class="level3">
+<h3>Case-sensitivity on iOS</h3>
+<p>iOS’s filesystem is <strong>case-sensitive</strong> in a way that
+often differs from Windows. A <strong>case-sensitivity fix</strong> step
+is <strong>required</strong> for many mods, or you may get
+<strong>crashes (e.g. “New game” → immediate exit)</strong> or missing
+assets.</p>
+<ul>
+<li>Run the fix only inside the real <strong>content</strong> folders,
+for example: <strong><code>modules</code></strong>,
+<strong><code>Override</code></strong>,
+<strong><code>streamwaves</code></strong>,
+<strong><code>streamsounds</code></strong>,
+<strong><code>streamvoice</code></strong>,
+<strong><code>rims</code></strong>, or
+<strong><code>lips</code></strong>, as your tool describes.<br />
+</li>
+<li><strong>Do not</strong> run a blanket lowercasing or rename pass on
+the <strong>top level of the whole IPA</strong>—only these game-data
+locations.</li>
+</ul>
+</section>
+<section id="repack-the-ipa-zip-not-a-single-nested-folder"
+class="level3">
+<h3>Repack the IPA (zip, not a single nested folder)</h3>
+<p>When the mods and case fix are done:</p>
+<ol type="1">
+<li><strong>Zip the contents</strong> of the <strong>top level</strong>
+of your modified app payload so the archive opens
+<strong>directly</strong> to folders and files, <strong>not</strong> to
+a single parent folder with everything hidden inside.<br />
+</li>
+<li>The usual mistake is creating
+<strong><code>MyApp/MyGame/Override/...</code></strong> as the only path
+inside the zip. Instead, the zip root should show
+<strong><code>Override</code></strong>,
+<strong><code>modules</code></strong>, and friends <strong>at the top of
+the archive</strong>, matching how the unzipped IPA looked.<br />
+</li>
+<li>After zipping, rename the archive to
+<strong><code>.ipa</code></strong> if your tool expects that
+extension.</li>
+</ol>
+<p>Continue to <a href="#sideloadly">Sideloadly</a>.</p>
+<hr />
+</section>
+</section>
+<section id="sideloadly" class="level2">
+<h2>Sideloadly</h2>
+<p>Install the modded build on your device:</p>
+<ol type="1">
+<li>Open <strong>Sideloadly</strong> and choose your
+<strong><code>.ipa</code></strong>.<br />
+</li>
+<li>Open <strong>Advanced options</strong> and review:
+<ul>
+<li><strong>Signing mode:</strong> <strong>Apple ID sideload</strong>
+(as documented; other modes are untested in this guide).<br />
+</li>
+<li><strong>Enable file sharing</strong> — useful for later file access
+/ tutorials.<br />
+</li>
+<li><strong>Remove limitation on supported devices</strong> — if you hit
+artificial compatibility blocks.<br />
+</li>
+<li><strong>Try to support older iOS versions</strong> — can help on
+hardware the App Store labels “incompatible” even when the app
+runs.<br />
+</li>
+</ul></li>
+<li>Connect the device, select it in Sideloadly
+(<strong>iDevice</strong>), open the <strong>log viewer</strong> (icon
+with two arrows), then press <strong>Start</strong>.</li>
+</ol>
+<p><strong>Expect a long install.</strong> The transfer and signing
+process can take <strong>many minutes</strong>. It is normal to wait a
+while; avoid unplugging the device mid-run unless a guide tells you to
+recover from a specific error.</p>
+<section id="sideloadly-error-lockdown_e_mux_error" class="level3">
+<h3>Sideloadly error: <code>LOCKDOWN_E_MUX_ERROR</code></h3>
+<p>You may see log lines like:</p>
+<pre class="text"><code>Got error: Call to lockdownd_start_service failed: LOCKDOWN_E_MUX_ERROR. IPA file exists, retrying
+FAILED: Call to lockdownd_start_service failed: LOCKDOWN_E_MUX_ERROR</code></pre>
+<ul>
+<li><strong>Free space:</strong> Many failures come from the device not
+having <strong>enough free space</strong>. As a <strong>rule of
+thumb</strong>, try to keep at least <strong>twice the IPA file
+size</strong> free (e.g. 10 GB free for a ~5 GB package).<br />
+</li>
+<li><strong>Connection:</strong> Unplugging/re-plugging the cable or
+<strong>restarting Sideloadly</strong> can clear transient USB/lockdownd
+issues.<br />
+</li>
+<li><strong>Patience:</strong> The process <strong>retries</strong>; if
+it is still progressing, let it run.</li>
+</ul>
+<p>When the log shows <strong>100%</strong> successfully, the sideloaded
+build should be on your device.</p>
+</section>
+<section id="after-a-successful-install" class="level3">
+<h3>After a successful install</h3>
+<ul>
+<li><strong>7-day (free) signing:</strong> On a free Apple ID, you
+typically must <strong>re-sign</strong> about every <strong>7
+days</strong> unless you have a <strong>paid Apple Developer</strong>
+membership. This is an Apple platform rule, not a Sideloadly quirk.
+Re-sideload periodically to refresh the signature.<br />
+</li>
+<li><strong>“New game” crash:</strong> If the game <strong>crashes
+immediately</strong> when starting a new game, the usual cause is
+<strong>skipped or incorrect case-sensitivity fixes</strong> — return to
+the PC, fix folder/file casing inside the allowed directories, and
+sideload again.<br />
+</li>
+<li><strong>Known quirk:</strong> Some mod builds (e.g. around
+<strong>Neocities</strong> mod build content) can show <strong>blaster
+icon</strong> issues; causes are not fully pinned down in all
+cases.</li>
+</ul>
+<hr />
+</section>
+</section>
+<section id="troubleshooting-tips" class="level2">
+<h2>Troubleshooting &amp; tips</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ipatool login fails</td>
+<td>Apple ID, password, 2FA flow per ipatool docs; region/account
+issues.</td>
+</tr>
+<tr>
+<td>No “overwrite” when merging MEGA files</td>
+<td>Wrong folder; compare against an unzipped K1/K2 app layout.</td>
+</tr>
+<tr>
+<td>TSLPatcher won’t accept path</td>
+<td>Dummy <code>swkotor.exe</code> (or K2 equivalent per tool); correct
+root folder.</td>
+</tr>
+<tr>
+<td>Build won’t open or crashes in-game</td>
+<td>Case-sensitivity; mod load order; vanilla vs modded
+<code>modules</code> conflicts.</td>
+</tr>
+<tr>
+<td>Sideloadly stuck / mux errors</td>
+<td><strong>Disk space</strong> on the device, cable, USB port, and
+patience with retries.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legal &amp; ethics:</strong> This guide is for people who
+<strong>purchased</strong> the iOS app and want to use mods. Do not use
+these instructions to <strong>pirate</strong> the game or to bypass DRM
+for copies you do not own.</p>
+<p><strong>Disclaimer:</strong> iOS and tool behavior change over time.
+Always use the <strong>latest</strong> official
+<strong>ipatool</strong>, <strong>Sideloadly</strong>, and
+<strong>TrollStore</strong> / <strong>AppDump2</strong> documentation.
+Third-party downloads (e.g. MEGA packs) are provided by the community,
+not this document—verify sources you trust.</p>
+<hr />
+<p><em>For questions or updates, refer to the community maintaining your
+preferred mod list or installer.</em></p>
+</section>
+</section>
+</main>
 </body>
 </html>
